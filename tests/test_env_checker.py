@@ -1,4 +1,7 @@
-"""Tests for envguard.env_checker."""
+"""Tests for envguard.env_checker.
+
+Verifies loading and parsing of .env files and comparing them against discovered variables.
+"""
 
 from pathlib import Path
 
