@@ -1,39 +1,41 @@
 # EnvGuard
 
-**A Claude skill that scans codebases for missing or hard‑coded environment variables, suggesting .env entries and security best practices.**
+**A CLI and Python utility that parses environment files, validates configuration, and detects missing or undefined environment variables.**
 
-<!-- THE PROBLEM: 2-3 concrete lines on the annoying thing this removes. -->
+Ever pushed code that crashed on startup because someone forgot to add a new `DATABASE_URL` or `API_KEY` to production `.env`? EnvGuard catches missing configuration early by parsing `.env` files and checking them against reference templates or codebase usage.
 
 ## Example
 
-<!-- A real command and its REAL pasted output. Run it first. -->
+Run `envguard` (or python module) to check an `.env` file against `.env.example`:
+
+```bash
+$ python -m envguard.env_checker .env .env.example
+Parsed 3 variables from .env
+Parsed 3 variables from .env.example
+All variables present.
+```
 
 ## Install
 
+Install in editable mode for development:
+
 ```bash
-pip install -e ".[dev]"
+pip install -e .
 ```
 
 ## Usage
 
-<!-- The 2-4 commands people actually need, one line each. -->
+- `python -m envguard.env_checker .env`: Parse and print defined keys in `.env`.
+- `python -m envguard.env_checker .env .env.example`: Check `.env` keys against `.env.example`.
 
 ## How it works
 
-<!-- 3-6 bullets: what it checks, computes or produces. -->
+- Parses `.env` and `.env.example` file formats supporting comments, blank lines, and quotes.
+- Identifies defined environment variable keys.
+- Compares environment configurations for missing or extra keys.
+- Emits clear validation reports and exit codes.
 
 ## Limitations
 
-<!-- Honest and short: what it does NOT do, known gaps. -->
-
-## Development
-
-```bash
-pip install -e ".[dev]"
-pytest -q
-ruff check .
-```
-
-## License
-
-MIT -- see [LICENSE](LICENSE).
+- Does not execute code or parse dynamic `os.environ` lookups across arbitrary source languages yet.
+- Focuses strictly on static `.env` parsing and key comparison.
