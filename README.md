@@ -2,11 +2,11 @@
 
 **A CLI and Python utility that parses environment files, validates configuration, and detects missing or undefined environment variables.**
 
-Ever pushed code that crashed on startup because someone forgot to add a new `DATABASE_URL` or `API_KEY` to production `.env`? EnvGuard catches missing configuration early by parsing `.env` files and checking them against reference templates or codebase usage.
+AI-generated code and legacy codebases frequently introduce scattered, undocumented environment variable dependencies across configuration files and source code without updating deployment `.env` templates. EnvGuard eliminates deployment crashes and configuration drift by statically parsing `.env` files and verifying environment variable completeness against reference templates before code reaches production.
 
 ## Example
 
-Run `envguard` (or python module) to check an `.env` file against `.env.example`:
+Run `envguard` to check an `.env` file against `.env.example`:
 
 ```bash
 $ python -m envguard.env_checker .env .env.example
