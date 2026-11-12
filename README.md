@@ -38,4 +38,5 @@ pip install -e .
 ## Limitations
 
 - Does not execute code or parse dynamic `os.environ` lookups across arbitrary source languages yet.
+- Does not handle dynamically constructed environment variable names (e.g., using string concatenation or f‑strings).
 - Focuses strictly on static `.env` parsing and key comparison.
